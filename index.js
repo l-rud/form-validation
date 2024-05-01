@@ -9,5 +9,12 @@ registrationForm.addEventListener("submit", (evt) => {
     userName.focus();
     alert("The username cannot be blank");
     return;
+
+    if (userName.value.length < 4) {
+        userName.focus();
+        alert("The username must be at least four characters long");
+        return;
+      }
+      
   }
 });
