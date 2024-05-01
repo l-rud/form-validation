@@ -9,6 +9,12 @@ function alert(message) {
     errorEl.style.display = "none";
   }, 3000);
 }
+function uniqueChar(str) {
+  // Use a regex pattern to match unique characters
+  let uniqueChars = str.match(/(.)(?!\1)/g);
+
+  return uniqueChars;
+}
 
 registrationForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -23,6 +29,12 @@ registrationForm.addEventListener("submit", (evt) => {
     if (userName.value.length < 4) {
         userName.focus();
         alert("The username must be at least four characters long");
+        return;
+      }
+
+      if (uniqueChar(userName.value).length < 2) {
+        userName.focus();
+        alert("The username must contain at least two unique characters");
         return;
       }
       
