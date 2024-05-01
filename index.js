@@ -16,9 +16,10 @@ function uniqueChar(str) {
   return uniqueChars;
 }
 
+const specialCharsAndWhitespaceRegex = /[!@#$%^&*()\-+={}[\]:;"'<>,.?\/|\\\s]/;
+
 registrationForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  registrationForm.submit();
 
   const userName = registrationForm.elements["username"];
   if (userName.value === "") {
@@ -37,6 +38,14 @@ registrationForm.addEventListener("submit", (evt) => {
         alert("The username must contain at least two unique characters");
         return;
       }
+
+      if (specialCharsAndWhitespaceRegex.test(userName.value)) {
+        userName.focus();
+        alert("The username cannot contain any special characters or whitespace");
+        return;
+      }
       
   }
+  
+  registrationForm.submit();
 });
