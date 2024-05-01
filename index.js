@@ -1,5 +1,15 @@
 const registrationForm = document.getElementById("registration");
 
+function alert(message) {
+  const errorEl = document.getElementById("errorDisplay");
+  errorEl.style.display = "block";
+  errorEl.textContent = message;
+
+  setTimeout(() => {
+    errorEl.style.display = "none";
+  }, 3000);
+}
+
 registrationForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   registrationForm.submit();
